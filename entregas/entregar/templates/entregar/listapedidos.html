@@ -1,0 +1,84 @@
+
+{% load static %}
+
+{% block content %}
+<head>
+
+     <title> Pedido </title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}" >
+     <link rel="stylesheet" href="{% static '/css/templatemo-style.css' %}">
+
+<style>
+    body,
+	html {
+		margin: 0;
+		padding: 0;
+		height: 100%;
+		background: url('/images/slider-image1.jpg');
+		font-family: Montserrat;
+		}
+    .profile-pic{
+        max-width: 200px;
+        max-height: 200px;
+        margin: 0 auto;
+        border-radius: 50%;
+</style>
+    <br>
+    <div class="container">
+        <a href="{% url 'logout' %}" class="section-btn btn btn-default smoothScroll">Sair</a>
+    </div>
+
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col" >
+        <div class="card card-body ">
+            <a class="btn btn-info btn-md btn-block" href="#">Achar Pedido</a>
+            <br>
+            <form method="get">
+                {{myFilter.form}}
+                 <button type="submit" class="btn btn-info ">Procurar Pedido</button>
+            </form>
+        </div>
+    </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <hr>
+        <div class="card card-body">
+            <a class="btn btn-info btn-md btn-block"  href="#" >Lista de Pedidos</a>
+            <table class="table table-sm table-striped">
+                <tr>
+                      <th>Cliente</th>
+                    <th>Produto</th>
+                    <th>Add Ingrediente</th>
+                     <th>Remover Ingrediente</th>
+                    <th>Data do Pedido</th>
+                    <th>Status</th>
+                    <th>Actualizar</th>
+                    <th>Remover</th>
+                </tr>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{order.customer}}</td>
+                         <td>{{ order.product }}</td>
+                        <td>{{order.adicionar_Ingrediente}}</td>
+                        <td>{{order.remover_Ingrediente}}</td>
+                        <td>{{ order.date_created }}</td>
+                        <td>{{ order.status }}</td>
+                        <td><a class="btm btn-sm btn-Primary" href="{% url 'update_order' order.id %}">Actualizar</a></td>
+                        <td><a class="btm btn-sm btn-danger" href="{% url 'delete_order' order.id %}">Remover</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

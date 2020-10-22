@@ -1,0 +1,50 @@
+
+#content-wrapper{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.column{
+	width: 600px;
+	padding: 10px;
+
+}
+#featured{
+	max-width: 500px;
+	max-height: 600px;
+
+	cursor: pointer;
+	border: 2px solid black;
+
+}
+
+.thumbnail{
+	object-fit: cover;
+	max-width: 180px;
+	max-height: 100px;
+	cursor: pointer;
+	opacity: 0.5;
+	margin: 5px;
+	border: 2px solid black;
+
+}
+
+.thumbnail:hover{
+	opacity:1;
+}
+
+.active{
+	opacity: 1;
+}
+
+.btn-custom {
+    padding: 1px 15px 3px 2px;
+    border-radius: 50px;
+}
+
+.btn-icon {
+    padding: 8px;
+    background: #ffffff;
+}

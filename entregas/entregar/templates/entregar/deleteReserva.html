@@ -1,0 +1,21 @@
+
+{% extends 'entregar/main.html' %}
+{% load static %}
+{% block content %}
+<br>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body text-white bg-dark">
+
+            <p>Tem Certeza que deseja Remover Reserva ? "</p>
+            <form action="{% url 'delete_reserva' reserva.id %}" method="POST">
+                {% csrf_token %}
+                <a class="btm btn-sm btn-Primary" href="{% url 'home' %}">Cancel</a>
+               <button type="submit" class="btm btn-sm btn-danger">Sim</button>
+            </form>
+         </div>
+    </div>
+</div>
+
+{% endblock %}

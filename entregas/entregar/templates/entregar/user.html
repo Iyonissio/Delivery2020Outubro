@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+{% block content %}
+
+<head>
+
+     <title>Aplicacao Web Restaurante</title>
+<!-- 
+
+Eatery Cafe Template 
+
+http://www.templatemo.com/tm-515-eatery
+
+-->
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="author" content="">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}">
+     <link rel="stylesheet" href="{% static '/css/font-awesome.min.css' %}">
+     <link rel="stylesheet" href="{% static '/css/animate.css' %}">
+     <link rel="stylesheet" href="{% static '/css/owl.carousel.css' %}">
+     <link rel="stylesheet" href="{% static '/css/owl.theme.default.min.css' %}">
+     <link rel="stylesheet" href="{% static '/css/magnific-popup.css' %}">
+
+     <!-- MAIN CSS -->
+     <link rel="stylesheet" href="{% static '/css/templatemo-style.css' %}">
+
+</head>
+<body>
+
+     <!-- PRE LOADER -->
+     <section class="preloader">
+          <div class="spinner">
+
+               <span class="spinner-rotate"></span>
+               
+          </div>
+     </section>
+
+      <!-- MENU -->
+     <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
+          <div class="container">
+
+               <div class="navbar-header">
+                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                    </button>
+
+                    <!-- lOGO TEXT HERE -->
+                    <a href="{% url 'home' %}" class="navbar-brand">Restaurante <span>.</span> ISPU</a>
+               </div>
+
+               <!-- MENU LINKS -->
+               <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-nav-first">
+                         <li><a href="{% url 'reclamacao' %}" class="smoothScroll">Reclamacao ou Recomendacao</a></li>
+                         <li><a href="{% url 'account' %}" class="smoothScroll">Perfil do Usuario</a></li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+
+                         <a href="{% url 'logout' %}" class="section-btn btn btn-default smoothScroll">Sair</a>
+                    </ul>
+
+               </div>
+               <div class="container">
+                   {% for l in lot %}
+                    <a class="section-btn btn btn-default smoothScroll">Capacidade do Restaurante: {{l.capacidade}} Pessoas</a>
+                    <a class="section-btn btn btn-default smoothScroll">Lotacao Actual: {{l.numero_de_clientes}} Pessoas</a>
+               {% endfor %}
+
+               </div>
+
+
+          </div>
+     </section>
+
+     <!-- HOME -->
+     <section id="home" class="slider" data-stellar-background-ratio="10.5">
+          <div class="row">
+
+                    <div class="owl-carousel owl-theme">
+                         <div class="item item-first">
+                              <div class="caption">
+                                   <div class="container">
+                                        <div class="col-md-8 col-sm-12">
+                                             <h1>Bem Vindo/a ,  {{request.user}}</h1>
+                                             <a href="{% url 'RoomListView' %}" class="section-btn">Reserva Mesa</a>
+
+                                             <a href="{% url 'create_order2' user.customer.id %}" class="section-btn">Faca Pedido</a>
+
+                                             <a href="{% url 'products' %}" class="section-btn btn btn-default smoothScroll">Veja o Menu</a>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+
+                    </div>
+          </div>
+     </section>
+
+
+
+     <!-- ABOUT -->
+
+     <!-- TESTIMONIAL -->
+
+     <!-- CONTACT -->
+
+     <!-- SCRIPTS -->
+     <script src="{% static 'js/jquery.js' %}"></script>
+     <script src="{% static '/js/bootstrap.min.js' %}"></script>
+     <script src="{% static '/js/jquery.stellar.min.js' %}"></script>
+     <script src="{% static '/js/wow.min.js' %}"></script>
+     <script src="{% static '/js/owl.carousel.min.js' %}"></script>
+     <script src="{% static '/js/jquery.magnific-popup.min.js' %}"></script>
+     <script src="{% static '/js/smoothscroll.js' %}"></script>
+     <script src="{% static '/js/custom.js' %}"></script>
+
+</body>
+
+{% endblock content %}
+</html>

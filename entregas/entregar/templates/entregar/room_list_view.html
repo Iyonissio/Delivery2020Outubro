@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotelina</title>
+    <!-- Main StyleSheet -->
+    <link rel="stylesheet" href="{% static '/css/room_list_view.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/nav.css' %}" />
+    <style>
+    body,
+	html {
+		margin: 0;
+		padding: 0;
+		height: 100%;
+		background: url('/images/slider-image3.jpg');
+		font-family: Montserrat;
+		}
+</style>
+  </head>
+<br>
+  <body>
+
+    <div class="container">
+
+      <div id="rooms">
+        {% for room_category, room_url in room_list %}
+        <div class="room">
+          <a href="{{room_url}}">
+          <img src="{% static 'images/mesas.jpg' %}"/>
+          <h2>Mesa {{room_category}}</h2>
+          <p>
+            Escolha ja a sua mesa e faca a sua reserva
+          </p>
+          </a>
+        </div>
+
+        {% endfor %}
+        <a class="btn btn-warning" href="{% url 'home' %}"> Voltar ao Menu Principal</a>
+         <a href="{% url 'BookingListView' %}">Reservas Efectuadas</i></a>
+      </div>
+
+    </div>
+
+    <script src="{% static '/js/nav.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+{% extends 'entregar/main.html' %}
+
+{% load crispy_forms_tags %}
+
+{% load bootstrap4 %}
+
+{% load static %}
+
+{% block content %}
+
+<br>
+<div class="container">
+    <div class="row">
+    <div class="col-md-10" >
+        <div class="card card-body " style="background-color:#F0F8FF">
+            <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ formset.management_form }}
+                    {% for form in formset %}
+                       {{form|crispy}}
+                    <hr>
+                    {% endfor %}
+                    <!--<input type="submit" name="Submit"> -->
+                    <button type="submit" class="btn btn-info">Efectuar Reserva</button>
+            </form>
+            <br>
+         </div>
+    </div>
+
+</div>
+</div>
+
+<br>
+
+<a class="btn btn-warning" href="{% url 'home' %}"  id="anchor">&#8592; Voltar ao Menu Principal</a>
+
+
+{% endblock %}

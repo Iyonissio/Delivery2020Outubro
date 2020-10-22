@@ -1,0 +1,81 @@
+
+
+{% load static %}
+
+{% load bootstrap4 %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<html>
+<head>
+	<title>Slider</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}" >
+
+<style>
+    body,
+	html {
+		margin: 0;
+		padding: 0;
+		height: 100%;
+		background: url('/images/.jpg');
+		font-family: Montserrat;
+		}
+    .profile-pic{
+        max-width: 200px;
+        max-height: 200px;
+        margin: 0 auto;
+        border-radius: 50%;
+
+
+</style>
+</head>
+<body>
+
+<br>
+
+
+			<div id="content-wrapper">
+				<div class="column">
+					<div id="img-container">
+						<div id="lens"></div>
+						<img id=featured src="{{produ.imageURL}}">
+					</div>
+				</div>
+				<div class="column">
+					<h3><strong>{{produ.name}}</strong></h3>
+					<hr>
+					<h4><strong>{{produ.price|floatformat:2}}Mt</strong></h4>
+					<p>{{produ.description}}</p>
+				</div>
+												<br>
+
+												<div>
+														<a class="btn btn-info" class="btm btn-sm btn-Primary" href="{% url 'create_order2' user.customer.id %}">Customizar Pedido</a>
+
+														<a class="btn btn-warning" href="{% url 'products' %}">&#8592; Voltar aos Productos</a>
+												</div>
+                                        	</div>
+
+
+
+
+	<script type="text/javascript" src="slider.js" ></script>
+	<script type="text/javascript" src="script.js" ></script>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+{% endblock content %}

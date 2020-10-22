@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load bootstrap4 %}
+{% load static %}
+
+{% block content %}
+<head>
+
+     <title> Pedido </title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}" >
+<style>
+    body,
+	html {
+		margin: 0;
+		padding: 0;
+		height: 100%;
+		background: url('/images/slider-image3.jpg');
+		font-family: Montserrat;
+		}
+</style>
+
+<br>
+<div class="row">
+
+    <div class="col-md">
+        <div class="card card-body">
+            <table class="table table table-striped">
+                <tr>
+                    <h2 class="btn btn-primary btn-sm btn-block" href="#">Lista dos Pedidos Efectuados Por {{user}}</h2>
+                    <a class="btn ">Antes de Fazer qualquer Pedido deve Preencher a Informacao do Perfil </a>
+
+                    <th>Produto</th>
+                    <th>Imagem</th>
+                    <th>Nota</th>
+                    <th>Data da Encomenda</th>
+                    <th>Status</th>
+                </tr>
+
+
+                {% for order in orders %}
+                <tr>
+                    <td>{{order.product}}</td>
+                    <td><div style="flex:2"><img class="row-image" src="{{ order.product.imageURL }}"></div></td>
+                    <td>{{order.note}}</td>
+                    <td>{{order.date_created}}</td>
+                    <td>{{order.status}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+    </div>
+
+</div>
+    <br>
+   <a class="btn btn-warning" href="{% url 'home' %}">&#8592; Voltar ao Menu Principal</a>
+    <br>
+<br>
+
+
+
+{% endblock content %}

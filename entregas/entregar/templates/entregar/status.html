@@ -1,0 +1,69 @@
+{% load static %}
+
+<br>
+
+<div class="container">
+<div class="row">
+    <div class="col">
+        <div class="col-md">
+            <div class="card text-center text-dark-active mb-3" id="total-orders">
+                <div class="card-header">
+
+                    <a class="btn " href="{% url 'cozinha' %}"><h5 class="card-title">Total de Pedidos</h5></a>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{total_orders}}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="col-md">
+            <div class="card text-center text-dark-active mb-3" id="total-orders">
+                <div class="card-header">
+
+                    <a class="btn " href="{% url 'listareservas' %}"><h5 class="card-title">Total de Reservas</h5></a>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{total_reservas}}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+        <div class="col-md">
+            <div class="card text-center text-dark-active mb-3" id="orders-delivered">
+                <div class="card-header">
+                    <a class="btn " href="{% url 'clientes' %}"><h5 class="card-title">Total de Clientes</h5></a>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{total_customers}}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+     <div class="col">
+        <div class="col-md">
+            <div class="card text-center text-dark-active mb-3" id="orders-delivered">
+                <div class="card-header">
+                    <a class="btn " href="#"><h5 class="card-title">Pedidos Entregues</h5></a>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{delivered}}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,82 @@
+{% load static %}
+
+{% block content %}
+
+<head>
+
+     <title> Pedido </title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}" >
+
+<style>
+    body,
+	html {
+		margin: 0;
+		padding: 0;
+		height: 100%;
+		background: url('/images/slider-image1.jpg');
+		font-family: Montserrat;
+		}
+    .profile-pic{
+        max-width: 200px;
+        max-height: 200px;
+        margin: 0 auto;
+        border-radius: 50%;
+</style>
+<br>
+<div class="container">
+ <div class="col" >
+        <div class="card card-body ">
+            <a class="btn btn-primary btn-md btn-block" href="#">Achar Reservas</a>
+            <br>
+            <form method="get">
+                {{myFilter.form}}
+                 <button type="submit" class="btn btn-primary">Procurarr Reserva</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<br>
+
+<div class="row">
+    <div class="col-md-12">
+        <hr>
+        <div class="card card-body ">
+            <a class="btn btn-primary btn-md btn-block" href="#">Reservas dos Clientes</a>
+            <table class="table table-sm table-striped">
+                <tr>
+                    <th></th>
+                    <th>Nome do Cliente</th>
+                    <th>Mesa</th>
+                    <th>Horario de Entrada</th>
+                    <th>Horario de Saida</th>
+                    <th>Reserva</th>
+                    <th>Remover</th>
+
+                </tr>
+
+                {% for r in reservas %}
+                    <tr>
+                        <td></td>
+                        <td>{{ r.user }}</td>
+                        <td>{{r.room}}</td>
+                        <td>{{ r.check_in}}</td>
+                        <td>{{ r.check_out}}</td>
+                        <td><a class="btm btn-sm btn-Primary" href="{% url 'update_reserva' r.id %}">Alterar Reserva</a></td>
+                        <td><a class="btm btn-sm btn-danger" href="{% url 'delete_reserva' r.id %}" >Remover</a></td>
+                    </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+
+
+</div>
+{% endblock content %}
+

@@ -1,0 +1,97 @@
+{% extends 'entregar/main.html' %}
+
+{% load static %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+
+<style>
+    .prof{
+        color: #fff;
+    }
+    .car{
+        background-color: #55B4B0;
+    }
+
+
+</style>
+<br>
+
+<div class="row">
+    <div class="col-md ">
+        <div  class="card card-body " >
+            <h5>Cliente:</h5>
+            <hr>
+            <a class="btn btn-outline-info btn-sm btn-block"
+               href="#">Faca a Encomenda Clicando no Botao Abaixo</a>
+            <a class="btn btn-info btn-sm btn-block"
+               href="{% url 'create_order' customer.id %}">Faca a Encomenda</a>
+        </div>
+    </div>
+    <div class="col-md">
+        <div class="card card-body ">
+            <h5>Informacoes do Contacto:</h5>
+
+            <p>Nome: {{customer.name}}</p>
+            <p>Email: {{customer.email}}</p>
+            <p>Phone: {{customer.phone}} </p>
+        </div>
+    </div>
+    <div class="col-md">
+        <div class="card card-body text-dark bg-info">
+            <h5>Total de Pedidos:</h5>
+            <hr>
+            <h1 style="text-align:center;padding:10px">{{order_count}}</h1>
+        </div>
+    </div>
+</div>
+
+<br>
+
+
+    <div class="col">
+        <div  class="card card-body  ">
+            <button class="btn btn-dark">Achar o Produto do Cliente</button>
+            <br>
+            <form method="get">
+                {{myFilter.form}}
+                 <button type="submit" class="btn btn-dark">Procurar</button>
+            </form>
+
+        </div>
+    </div>
+
+
+<br>
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <table class="table table-sm table-striped">
+                <tr>
+                    <th>Produto</th>
+                    <th>Imagem</th>
+                    <th>Nota</th>
+                    <th>Data da Encomenda</th>
+                    <th>Status</th>
+                    <th>Actualizar</th>
+                    <th>Remover</th>
+                </tr>
+                {% for order in orders %}
+                <tr>
+                    <td>{{order.product}}</td>
+                    <td><div style="flex:2"><img class="row-image" src="{{ order.product.imageURL }}"></div></td>
+                    <td>{{order.note}}</td>
+                    <td>{{order.date_created}}</td>
+                    <td>{{order.status}}</td>
+                    <td><a class="btm btn-sm btn-Primary" href="{% url 'update_order' order.id %}">Actualizar</a></td>
+                    <td><a class="btm btn-sm btn-danger" href="{% url 'delete_order' order.id %}">Remover</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

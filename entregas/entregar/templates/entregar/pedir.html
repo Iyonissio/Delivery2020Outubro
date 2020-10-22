@@ -1,0 +1,36 @@
+{% extends 'entregar/main.html' %}
+
+{% load crispy_forms_tags %}
+
+{% load bootstrap4 %}
+
+{% load static %}
+
+{% block content %}
+
+<br>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card card-body text-white bg-secondary">
+            <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ formsett.management_form }}
+                    {% for form in formsett %}
+                        {{form|crispy}}
+                    <hr>
+                    {% endfor %}
+                    <input type="submit" name="Submit">
+                    <!-- <button type="submit" class="btn btn-primary">Gravar</button> -->
+            </form>
+            <br>
+         </div>
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock content %}

@@ -1,0 +1,42 @@
+{% extends 'entregar/main.html' %}
+{% block content %}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <hr>
+        <div class="card card-body ">
+            <a class="btn btn-primary btn-sm btn-block" href="#">Reservas dos Clientes</a>
+            <table class="table table-sm table-striped">
+                <tr>
+                    <th></th>
+                    <th>Nome do Cliente</th>
+                    <th>Mesa</th>
+                    <th>Data de Reserva</th>
+                    <th>Data de Entrada</th>
+                    <th>Data de Saida</th>
+                </tr>
+
+                 {% for r in reservas %}
+                    <tr>
+                        <td></td>
+                        <td>{{ r.nome_da_reserva }}</td>
+                        <td>{{ r.mesas}}</td>
+                        <td>{{ r.date_created}}</td>
+                        <td>{{ r.entrada}}</td>
+                        <td>{{ r.saida}}</td>
+                    </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+</div>
+ <a class="btn btn-warning" href="{% url 'home' %}">&#8592; Voltar ao Menu Principal</a>
+
+
+
+
+
+
+{% endblock content %}
