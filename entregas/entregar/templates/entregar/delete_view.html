@@ -1,0 +1,22 @@
+{% extends 'entregar/main.html' %}
+{% load static %}
+{% block content %}
+<br>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body text-white bg-dark">
+            <div class="main">
+                <!-- Create a Form -->
+                <form method="POST">
+                    <!-- Security token by Django -->
+                    {% csrf_token %}
+                    Tem certeza que pretende apagar este Funcionario "{{form.nome}}" do Sistema ?
+                    <input type="submit" value="SIM" />
+                    <a href="/">Cancel </a>
+                </form>
+            </div>
+             </div>
+    </div>
+</div>
+{% endblock %}
